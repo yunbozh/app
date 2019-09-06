@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e97a189b-bc4e-4810-8714-ed59852ec7f8" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="app" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Go Application" />
+        <option value="Go File" />
+      </list>
+    </option>
+  </component>
+  <component name="GOROOT" path="/usr/local/go" />
+  <component name="ProjectId" id="1P2AsAnW3bKG5s38EpzciahZmFt" />
+  <component name="PropertiesComponent">
+    <property name="DefaultGoTemplateProperty" value="Go File" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/gate" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/gate" />
+      <recent name="$PROJECT_DIR$/network" />
+      <recent name="$PROJECT_DIR$/mynet/peer" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/master" />
+      <recent name="$PROJECT_DIR$/common/logger" />
+      <recent name="$PROJECT_DIR$/common/consoleCmd" />
+      <recent name="$PROJECT_DIR$/common/serverConf" />
+      <recent name="$PROJECT_DIR$/def" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Go Build.master">
+    <configuration name="gate" type="GoApplicationRunConfiguration" factoryName="Go Application">
+      <module name="app" />
+      <working_directory value="$PROJECT_DIR$/gate/" />
+      <go_parameters value="-i" />
+      <kind value="DIRECTORY" />
+      <filePath value="$PROJECT_DIR$/" />
+      <package value="app" />
+      <directory value="$PROJECT_DIR$/gate" />
+      <output_directory value="$PROJECT_DIR$/../../bin" />
+      <method v="2" />
+    </configuration>
+    <configuration name="master" type="GoApplicationRunConfiguration" factoryName="Go Application">
+      <module name="app" />
+      <working_directory value="$PROJECT_DIR$/../../bin" />
+      <go_parameters value="-i" />
+      <kind value="DIRECTORY" />
+      <filePath value="$PROJECT_DIR$/" />
+      <package value="app" />
+      <directory value="$PROJECT_DIR$/master" />
+      <output_directory value="$PROJECT_DIR$/../../bin" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test" type="GoApplicationRunConfiguration" factoryName="Go Application">
+      <module name="app" />
+      <working_directory value="$PROJECT_DIR$/test/" />
+      <go_parameters value="-i" />
+      <parameters value="192.168.0.1" />
+      <kind value="DIRECTORY" />
+      <filePath value="$PROJECT_DIR$/" />
+      <package value="app" />
+      <directory value="$PROJECT_DIR$/test" />
+      <output_directory value="$PROJECT_DIR$/../../bin" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Go Build.test" />
+      <item itemvalue="Go Build.gate" />
+      <item itemvalue="Go Build.master" />
+    </list>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+</project>

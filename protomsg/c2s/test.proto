@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package test;
+
+enum PhoneType {
+    HOME = 0;
+    WORK = 1;
+}
+
+//手机
+message Phone {
+    uint32 msg_id = 1;
+    PhoneType type = 2;
+    int32 number = 3;
+    string name = 4;
+}
