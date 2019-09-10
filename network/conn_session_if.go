@@ -12,7 +12,7 @@ type ConnSessionIf interface {
 	Close()
 	Destroy()
 
-	SetID(int32)
-	GetID() int32
+	SetID(uint32)
+	GetID() uint32
 	SendMsg(msgId uint32, msg interface{}) error
 }

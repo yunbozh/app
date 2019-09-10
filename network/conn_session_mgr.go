@@ -1,6 +1,7 @@
 package network
 
 import (
+	"app/common/logger"
 	"sync"
 	"sync/atomic"
 )
@@ -28,14 +29,18 @@ func (self *ConnSessionMgr) SetBaseId(baseId int32) {
 	atomic.StoreInt32(&self.connIdx, baseId)
 }
 
+func (self *ConnSessionMgr) GenConnIdx() int32 {
+	return atomic.AddInt32(&self.connIdx, 1)
+}
+
 func (self *ConnSessionMgr) Add(session ConnSessionIf) {
-	newId := atomic.AddInt32(&self.connIdx, 1)
+	connIdx := self.GenConnIdx()
 
 	atomic.AddInt32(&self.connCount, 1)
 
-	session.(interface{ SetID(int32) }).SetID(newId)
+	session.(interface{ SetID(uint32) }).SetID(uint32(connIdx))
 
-	self.sessionMap.Store(newId, session)
+	self.sessionMap.Store(connIdx, session)
 }
 
 func (self *ConnSessionMgr) Remove(session ConnSessionIf) {
@@ -78,7 +83,7 @@ func (self *ConnSessionMgr) CloseAllSession() {
 func (self *ConnSessionMgr) SendMsg(conn_idx int32, msgId uint32, msg interface{}) error {
 	session := self.GetSession(conn_idx)
 	if session == nil {
-		logger.Errorf("connextion not exist, conn_idx: %d", conn_idx)
+		logger.Error("connextion not exist, conn_idx: %d", conn_idx)
 		return nil
 	}
 

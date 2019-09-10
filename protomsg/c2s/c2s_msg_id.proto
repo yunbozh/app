@@ -1,0 +1,8 @@
+syntax = "proto2";
+
+package c2s;
+
+enum MsgID {
+    MSGID_C2S_UNSPECIFIED = 0;
+    MSGID_C2S_REQ_LOGIN = 1;
+}

@@ -1,10 +1,11 @@
 package main
 
 import (
-	"app/common/serverConf"
+	"app/common/logger"
+	"app/common/server"
+	"app/def"
 	"app/network"
 	"runtime/debug"
-	"time"
 )
 
 var (
@@ -17,13 +18,26 @@ func init() {
 }
 
 type MasterServer struct {
-	tcpServer *network.TCPServer
+	server.ServerInfo
+	mainLoop *server.MainLoop
 
-	mainLoopTimer *time.Timer
+	tcpServer *network.TCPServer
 }
 
 func (self *MasterServer) Init() {
-	conf := serverConf.GetServerConf()
+	serverId := server.GetCmdLineArgs().ServerId
+	conf := server.GetServerConf()
+
+	if serverId <= def.INVALID_ID || serverId > uint(conf.MSCount) {
+		logger.Error("invalid server id: %d", serverId)
+		return
+	}
+
+	// 初始serverUid
+	self.SetServerUid(def.SERVER_TYPE_MASTER, uint16(serverId))
+
+	// 初始主循环
+	self.mainLoop = server.NewMainLoop(self.Update)
 
 	self.tcpServer = network.NewTCPServer(&network.TCPServerOptions{
 		Ip:               conf.MSAddr.Ip,
@@ -37,33 +51,30 @@ func (self *MasterServer) Init() {
 func (self *MasterServer) Run() {
 	self.tcpServer.Start()
 
-	self.MainLoop()
+	self.mainLoop.Start()
 }
 
 func (self *MasterServer) Close() {
-	self.mainLoopTimer.Stop()
+	self.mainLoop.Stop()
 
 	self.tcpServer.Close()
 }
 
-func (self *MasterServer) MainLoop() {
-	self.mainLoopTimer = time.AfterFunc(1000*time.Millisecond, self.MainLoop)
-
+func (self *MasterServer) Update() {
 	defer func() {
 		if err := recover(); err != nil {
-			logger.Errorf("%v", err)
-			logger.Errorf("%s", debug.Stack())
+			logger.Error("%v", err)
+			logger.Error("%s", debug.Stack())
 		}
 	}()
 
-	self.Update(time.Now().UnixNano() / 1e6)
-}
+	//now := time.Now().UnixNano() / 1e6
 
-func (self *MasterServer) Update(now int64) {
 
 	// github.com/op/go-logging
 	// github.com/phachon/go-logger
 	// github.com/wonderivan/logger
 	// github.com/gxlog/gxlog
 	// github.com/ngaut/log
+	// github.com/sdbaiguanghe/glog
 }

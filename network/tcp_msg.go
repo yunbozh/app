@@ -15,6 +15,7 @@ const (
 	MSG_LEN = 2
 	// 消息最大长度
 	MSG_MAX_LEN = 65535
+
 )
 
 type MsgParser struct {

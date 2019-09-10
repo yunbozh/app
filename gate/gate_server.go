@@ -1,15 +1,15 @@
 package main
 
 import (
-	"app/common/serverConf"
+	"app/common/logger"
+	"app/common/server"
 	"app/def"
 	"app/network"
 	"runtime/debug"
-	"time"
 )
 
 var (
-	serverName = "gs"
+	serverName  = "gs"
 	sGateServer *GateServer
 )
 
@@ -18,18 +18,28 @@ func init() {
 }
 
 type GateServer struct {
-	serverUid def.ServerUid
+	server.ServerInfo
+	mainLoop *server.MainLoop
 
 	tcpServerForClient *network.TCPServer
 	tcpServerForServer *network.TCPServer
-
-	tcpClient *network.TCPClient
-
-	mainLoopTimer *time.Timer
+	tcpClient          *network.TCPClient
 }
 
 func (self *GateServer) Init() {
-	conf := serverConf.GetServerConf()
+	serverId := server.GetCmdLineArgs().ServerId
+	conf := server.GetServerConf()
+
+	if serverId <= def.INVALID_ID || serverId > uint(conf.MSCount) {
+		logger.Error("invalid server id: %d", serverId)
+		return
+	}
+
+	// 初始serverUid
+	self.SetServerUid(def.SERVER_TYPE_GATE, uint16(serverId))
+
+	// 初始主循环
+	self.mainLoop = server.NewMainLoop(self.Update)
 
 	self.tcpServerForServer = network.NewTCPServer(&network.TCPServerOptions{
 		Ip:               conf.GSAddr[0].IpForServer,
@@ -62,30 +72,24 @@ func (self *GateServer) Run() {
 	self.tcpServerForClient.Start()
 	self.tcpClient.Start()
 
-	self.MainLoop()
+	self.mainLoop.Start()
 }
 
 func (self *GateServer) Close() {
-	self.mainLoopTimer.Stop()
+	self.mainLoop.Stop()
 
 	self.tcpServerForServer.Close()
 	self.tcpServerForClient.Close()
 	self.tcpClient.Close()
 }
 
-func (self *GateServer) MainLoop() {
-	self.mainLoopTimer = time.AfterFunc(100*time.Millisecond, self.MainLoop)
-
+func (self *GateServer) Update() {
 	defer func() {
 		if err := recover(); err != nil {
-			logger.Errorf("%v", err)
-			logger.Errorf("%s", debug.Stack())
+			logger.Error("%v", err)
+			logger.Error("%s", debug.Stack())
 		}
 	}()
 
-	self.Update(time.Now().UnixNano() / 1e6)
-}
-
-func (self *GateServer) Update(now int64) {
-
+	//now := time.Now().UnixNano() / 1e6
 }

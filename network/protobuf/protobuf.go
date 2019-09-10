@@ -1,10 +1,10 @@
 package protobuf
 
 import (
-	test "app/pb/c2s"
+	"app/common/logger"
+	"app/pb/c2s"
 	"encoding/binary"
 	"errors"
-	"fmt"
 	"github.com/golang/protobuf/proto"
 )
 
@@ -13,7 +13,6 @@ import (
 // -------------------------
 
 const (
-	// 消息ID占4个字节
 	MSG_ID_LEN = 4
 )
 
@@ -26,13 +25,12 @@ type MsgHandler func([]byte)
 func NewProcessor() *Processor {
 	p := new(Processor)
 	p.msgRouter = make(map[uint32]MsgHandler)
-
 	return p
 }
 
 func (self *Processor) Register(msgId uint32, handler MsgHandler) {
 	if _, ok := self.msgRouter[msgId]; ok {
-		fmt.Println("message %s is already registered", msgId)
+		logger.Error("message %s is already registered", msgId)
 		return
 	}
 
@@ -41,12 +39,12 @@ func (self *Processor) Register(msgId uint32, handler MsgHandler) {
 
 // goroutine safe
 func (self *Processor) Route(msg interface{}) error {
-	msgInfo, ok := msg.(*test.Phone)
+	msgInfo, ok := msg.(*c2s.ReqLogin)
 	if !ok {
 		return errors.New("msg type error")
 	}
 
-	fmt.Printf("recv msg: %v \n", msgInfo)
+	logger.Debug("recv msg: %v \n", msgInfo)
 
 	return nil
 }
@@ -54,12 +52,11 @@ func (self *Processor) Route(msg interface{}) error {
 // goroutine safe
 func (self *Processor) Unmarshal(data []byte) (interface{}, error) {
 	if len(data) < MSG_ID_LEN {
-		return nil, errors.New("protobuf data too short")
+		return nil, errors.New("msg data too short")
 	}
 
 	//msgId := binary.BigEndian.Uint32(data)
-
-	msg := new(test.Phone)
+	msg := new(c2s.ReqLogin)
 	err := proto.UnmarshalMerge(data[4:], msg)
 
 	return msg, err

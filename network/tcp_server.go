@@ -1,6 +1,7 @@
 package network
 
 import (
+	"app/common/logger"
 	"app/network/protobuf"
 	"fmt"
 	"net"
@@ -14,8 +15,9 @@ const (
 )
 
 type TCPServer struct {
-	options TCPServerOptions
-	Addr    string
+	options        TCPServerOptions
+
+	Addr string
 
 	ln   net.Listener
 	lnWG sync.WaitGroup
@@ -39,16 +41,15 @@ func NewTCPServer(options *TCPServerOptions) *TCPServer {
 	return tcpServer
 }
 
-func (self *TCPServer) OnConnectHandler(connIdx int32) {
-	self.options.OnConnectHandler(connIdx)
+func (self *TCPServer) OnConnectHandler(connIdx uint32, ip string) {
+	self.options.OnConnectHandler(connIdx, ip)
 }
 
-func (self *TCPServer) OnRecvHandler(connIdx int32, msgId int32, msg interface{}) {
+func (self *TCPServer) OnRecvHandler(connIdx uint32, msgId uint32, msg interface{}) {
 	self.options.OnRecvHandler(connIdx, msgId, msgId)
 }
 
-func (self *TCPServer) OnCloseHandler(connIdx int32) {
-
+func (self *TCPServer) OnCloseHandler(connIdx uint32) {
 	self.options.OnCloseHandler(connIdx)
 }
 
@@ -96,7 +97,7 @@ func (self *TCPServer) Close() {
 func (self *TCPServer) init() {
 	ln, err := net.Listen("tcp", self.Addr)
 	if err != nil {
-		logger.Errorf("listen error, %v", err)
+		logger.Error("listen error, %v", err)
 		return
 	}
 
@@ -113,12 +114,12 @@ func (self *TCPServer) run() {
 	defer self.lnWG.Done()
 
 	// 开始监听端口
-	logger.Debugf("server start, listen port: %d", self.options.Port)
+	logger.Debug("server start, listen port: %d", self.options.Port)
 
 	for {
 		conn, err := self.ln.Accept()
 		if err != nil {
-			logger.Errorf("listener accept error, %v", err)
+			logger.Error("listener accept error, %v", err)
 
 			if ne, ok := err.(net.Error); ok && ne.Temporary() {
 				time.Sleep(10 * time.Millisecond)
@@ -131,7 +132,7 @@ func (self *TCPServer) run() {
 		if self.connMgr.GetCount() >= TCP_CONNECT_MAX_COUNT {
 			conn.Close()
 
-			logger.Warning("max count conections")
+			logger.Error("max count conections")
 			time.Sleep(10 * time.Millisecond)
 			continue
 		}
@@ -143,10 +144,10 @@ func (self *TCPServer) run() {
 func (self *TCPServer) newConnect(conn net.Conn) {
 	session := newConnSession(conn, self)
 	self.connMgr.Add(session)
-	logger.Debugf("new connection, address: %s, connIdx: %d", conn.RemoteAddr().String(), session.GetID())
+	logger.Debug("new connection, address: %s, connIdx: %d", conn.RemoteAddr().String(), session.GetID())
 
 	session.Run()
 
-	logger.Debugf("close connection, address: %s, connIdx: %d", conn.RemoteAddr().String(), session.GetID())
+	logger.Debug("close connection, address: %s, connIdx: %d", conn.RemoteAddr().String(), session.GetID())
 	self.connMgr.Remove(session)
 }

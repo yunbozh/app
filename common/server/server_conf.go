@@ -1,4 +1,4 @@
-package serverConf
+package server
 
 import (
 	"github.com/BurntSushi/toml"

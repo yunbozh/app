@@ -1,0 +1,9 @@
+syntax = "proto2";
+
+package s2s;
+
+enum MsgID {
+    MSGID_S2S_UNSPECIFIED = 0;
+    MSGID_S2S_REQ_ENTER = 1;
+    MSGID_S2S_REP_ENTER = 2;
+}

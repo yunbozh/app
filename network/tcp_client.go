@@ -1,6 +1,7 @@
 package network
 
 import (
+	"app/common/logger"
 	"app/network/protobuf"
 	"fmt"
 	"net"
@@ -40,15 +41,15 @@ func NewTCPClient(options *TCPClientOptions) *TCPClient {
 	return tcpClient
 }
 
-func (self *TCPClient) OnConnectHandler(connIdx int32) {
-	self.options.OnConnectHandler(connIdx)
+func (self *TCPClient) OnConnectHandler(connIdx uint32, ip string) {
+	self.options.OnConnectHandler(connIdx, ip)
 }
 
-func (self *TCPClient) OnRecvHandler(connIdx int32, msgId int32, msg interface{}) {
+func (self *TCPClient) OnRecvHandler(connIdx uint32, msgId uint32, msg interface{}) {
 	self.options.OnRecvHandler(connIdx, msgId, msg)
 }
 
-func (self *TCPClient) OnCloseHandler(connIdx int32) {
+func (self *TCPClient) OnCloseHandler(connIdx uint32) {
 	self.options.OnCloseHandler(connIdx)
 }
 
@@ -102,7 +103,7 @@ func (self *TCPClient) init() {
 	self.connMgr = NewConnSessionMgr()
 }
 
-func (self *TCPClient) newConnect(addr string, id chan<- int32) {
+func (self *TCPClient) newConnect(addr string, id chan<- uint32) {
 	self.connWG.Add(1)
 	defer self.connWG.Done()
 
@@ -115,13 +116,13 @@ func (self *TCPClient) newConnect(addr string, id chan<- int32) {
 
 	conn, err := net.Dial("tcp", addr)
 	if err != nil {
-		logger.Debugf("connect to %s error: %v", self.Addr, err)
+		logger.Debug("connect to %s error: %v", self.Addr, err)
 		return
 	}
 
 	session := newConnSession(conn, self)
 	self.connMgr.Add(session)
-	logger.Debugf("new connection, address: %s", conn.RemoteAddr().String())
+	logger.Debug("new connection, address: %s", conn.RemoteAddr().String())
 
 	if id != nil {
 		id <- session.GetID()
@@ -129,13 +130,13 @@ func (self *TCPClient) newConnect(addr string, id chan<- int32) {
 
 	session.Run()
 
-	logger.Debugf("close connection, address: %s", conn.RemoteAddr().String())
+	logger.Debug("close connection, address: %s", conn.RemoteAddr().String())
 	self.connMgr.Remove(session)
 
 }
 
-func (self *TCPClient) Connect(addr string) (int32, bool) {
-	id := make(chan int32, 1)
+func (self *TCPClient) Connect(addr string) (uint32, bool) {
+	id := make(chan uint32, 1)
 
 	go self.newConnect(addr, id)
 
