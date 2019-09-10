@@ -3,31 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="e97a189b-bc4e-4810-8714-ed59852ec7f8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/serverConf/server_conf.go" beforeDir="false" afterPath="$PROJECT_DIR$/common/server/server_conf.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/def/server_def.go" beforeDir="false" afterPath="$PROJECT_DIR$/def/server_def.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gate/gate_server.go" beforeDir="false" afterPath="$PROJECT_DIR$/gate/gate_server.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gate/gate_server_handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/gate/gate_server_handler.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gate/logger.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gate/session.go" beforeDir="false" afterPath="$PROJECT_DIR$/gate/session.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gate/sessionMgr.go" beforeDir="false" afterPath="$PROJECT_DIR$/gate/sessionMgr.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/master/logger.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/master/master_server.go" beforeDir="false" afterPath="$PROJECT_DIR$/master/master_server.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/master/master_server_handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/master/master_server_handler.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/network/conn_session.go" beforeDir="false" afterPath="$PROJECT_DIR$/network/conn_session.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/network/conn_session_if.go" beforeDir="false" afterPath="$PROJECT_DIR$/network/conn_session_if.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/network/conn_session_mgr.go" beforeDir="false" afterPath="$PROJECT_DIR$/network/conn_session_mgr.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/network/logger.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/network/msg_meta.go" beforeDir="false" afterPath="$PROJECT_DIR$/common/msg_route/msg_meta.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/network/msg_route.go" beforeDir="false" afterPath="$PROJECT_DIR$/common/msg_route/msg_route.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/network/peer_if.go" beforeDir="false" afterPath="$PROJECT_DIR$/network/peer_if.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/network/processor.go" beforeDir="false" afterPath="$PROJECT_DIR$/network/processor_if.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/network/protobuf/protobuf.go" beforeDir="false" afterPath="$PROJECT_DIR$/network/protobuf/protobuf.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/network/tcp_client.go" beforeDir="false" afterPath="$PROJECT_DIR$/network/tcp_client.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/network/tcp_handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/network/tcp_handler.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/network/tcp_msg.go" beforeDir="false" afterPath="$PROJECT_DIR$/network/tcp_msg.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/network/tcp_server.go" beforeDir="false" afterPath="$PROJECT_DIR$/network/tcp_server.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pb/c2s/test.pb.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/protomsg/c2s/test.proto" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
