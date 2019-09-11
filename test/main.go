@@ -34,7 +34,6 @@ func (self People) getAge() uint32 {
 }
 
 func main() {
-
 	people := People{Student{name: "yunbozh", age: 1000}}
 
 	var a A = people

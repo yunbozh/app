@@ -36,7 +36,7 @@ func (self *GateServer) Init() {
 	}
 
 	// 初始serverUid
-	self.SetServerUid(def.SERVER_TYPE_GATE, uint16(serverId))
+	self.SetServerUid(def.SERVER_TYPE_GS, uint16(serverId))
 
 	// 初始主循环
 	self.mainLoop = server.NewMainLoop(self.Update)

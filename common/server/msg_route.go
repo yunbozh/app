@@ -1,7 +1,8 @@
-package msg_route
+package server
 
 import (
 	"app/common/logger"
+	"app/def"
 	"reflect"
 )
 
@@ -21,7 +22,7 @@ func NewMsgRoute() *MsgRoute {
 }
 
 // 消息注册
-func (self *MsgRoute) RegisterMsg(msgId uint32, msgType reflect.Type, msgHandler MsgHandler) bool {
+func (self *MsgRoute) RegisterMsg(msgId uint32, msgType reflect.Type, msgHandler def.MsgHandler) bool {
 	if msgId == 0 || msgType == nil || msgHandler == nil {
 		return false
 	}

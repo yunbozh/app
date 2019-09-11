@@ -158,3 +158,11 @@ func (self *TCPClient) Close() {
 
 	self.connWG.Wait()
 }
+
+func (self *TCPClient) Send(connIdx uint32, msgId uint32, msg interface{}) {
+	self.connMgr.SendMsg(int32(connIdx), msgId, msg)
+}
+
+func (self *TCPClient) GetPeerType() PeerType {
+	return PEER_TYPE_TCP_CLIENT
+}

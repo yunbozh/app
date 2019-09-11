@@ -1,4 +1,4 @@
-package msg_route
+package server
 
 import (
 	"app/common/logger"
@@ -20,25 +20,30 @@ func NewMsgRouteHolder() *MsgRouteHolder {
 }
 
 func (self *MsgRouteHolder) RegisterMsg(routeType def.MsgRouteType, msgId uint32,
-	msgType reflect.Type, msgHandler MsgHandler) {
+	msgType reflect.Type, msgHandler def.MsgHandler) bool {
 
 	if route, ok := self.msgRouteMap[routeType]; ok {
 		route.RegisterMsg(msgId, msgType, msgHandler)
-		return
+		return false
 	}
 
 	if routeType == def.MSG_ROUTE_TYPE_INVALID || routeType >= def.MSG_ROUTE_TYPE_COUNT {
 		logger.Error("msg route type no exist, type: %d", routeType)
-		return
+		return false
 	}
 
 	route := NewMsgRoute()
 	route.RegisterMsg(msgId, msgType, msgHandler)
 	self.msgRouteMap[routeType] = route
+
+	return true
 }
 
-func (self *MsgRouteHolder) RecvMsg(routeType def.MsgRouteType, msgId uint32, msg interface{}) {
+func (self *MsgRouteHolder) RouteMsg(stub ServerStubIf, connIdx uint32, msgId uint32, msg interface{}) {
+	routeType := def.ServerTypeToRouteType(stub.GetServerType())
+
 	if route, ok := self.msgRouteMap[routeType]; ok {
+
 		msgMeta := route.GetMessageById(msgId)
 		if msgMeta == nil {
 			logger.Error("msg not register, msgId: %d", msgId)
@@ -46,7 +51,11 @@ func (self *MsgRouteHolder) RecvMsg(routeType def.MsgRouteType, msgId uint32, ms
 		}
 
 		if msgMeta.Handler != nil {
-			msgMeta.Handler(msg)
+			msgMeta.Handler(stub, msg)
 		}
+
+	} else {
+
+		logger.Error("msg route not exist, route type: %d", routeType)
 	}
 }

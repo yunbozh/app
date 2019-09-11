@@ -3,6 +3,19 @@
   <component name="ChangeListManager">
     <list default="true" id="e97a189b-bc4e-4810-8714-ed59852ec7f8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/msg_route/msg_meta.go" beforeDir="false" afterPath="$PROJECT_DIR$/common/server/msg_meta.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/msg_route/msg_route.go" beforeDir="false" afterPath="$PROJECT_DIR$/common/server/msg_route.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/msg_route/msg_route_holder.go" beforeDir="false" afterPath="$PROJECT_DIR$/common/server/msg_route_holder.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/def/msg_route_def.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/def/server_def.go" beforeDir="false" afterPath="$PROJECT_DIR$/def/server_def.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gate/gate_server.go" beforeDir="false" afterPath="$PROJECT_DIR$/gate/gate_server.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/master/master_server.go" beforeDir="false" afterPath="$PROJECT_DIR$/master/master_server.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/master/master_server_handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/master/master_server_handler.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/network/conn_session.go" beforeDir="false" afterPath="$PROJECT_DIR$/network/conn_session.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/network/peer_if.go" beforeDir="false" afterPath="$PROJECT_DIR$/network/peer_if.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/network/tcp_client.go" beforeDir="false" afterPath="$PROJECT_DIR$/network/tcp_client.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/network/tcp_server.go" beforeDir="false" afterPath="$PROJECT_DIR$/network/tcp_server.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/main.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -36,18 +49,18 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/network" />
+      <recent name="$PROJECT_DIR$/common/server" />
+      <recent name="$PROJECT_DIR$/common/msg_route" />
+      <recent name="$PROJECT_DIR$/common/logger" />
+      <recent name="$PROJECT_DIR$/common" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/log" />
       <recent name="$PROJECT_DIR$/gate" />
       <recent name="$PROJECT_DIR$/network" />
       <recent name="$PROJECT_DIR$/mynet/peer" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/common/msg_route" />
-      <recent name="$PROJECT_DIR$/common/logger" />
-      <recent name="$PROJECT_DIR$/common" />
-      <recent name="$PROJECT_DIR$/network" />
-      <recent name="$PROJECT_DIR$/common/msg" />
     </key>
   </component>
   <component name="RunDashboard">

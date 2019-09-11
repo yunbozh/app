@@ -1,18 +1,16 @@
-package msg_route
+package server
 
 import (
+	"app/def"
 	"path"
 	"reflect"
 	"strings"
 )
 
-// 消息处理函数
-type MsgHandler func(interface{})
-
 type MsgMeta struct {
-	Id      uint32       // 消息ID
-	Type    reflect.Type // 消息类型
-	Handler MsgHandler   // 消息处理函数
+	Id      uint32         // 消息ID
+	Type    reflect.Type   // 消息类型
+	Handler def.MsgHandler // 消息处理函数
 }
 
 // 消息全名

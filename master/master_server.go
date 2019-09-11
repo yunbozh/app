@@ -22,6 +22,9 @@ type MasterServer struct {
 	mainLoop *server.MainLoop
 
 	tcpServer *network.TCPServer
+
+	serverStubHolder *server.ServerStubHolder
+	msgRouteHolder *server.MsgRouteHolder
 }
 
 func (self *MasterServer) Init() {
@@ -34,11 +37,12 @@ func (self *MasterServer) Init() {
 	}
 
 	// 初始serverUid
-	self.SetServerUid(def.SERVER_TYPE_MASTER, uint16(serverId))
+	self.SetServerUid(def.SERVER_TYPE_MS, uint16(serverId))
 
 	// 初始主循环
 	self.mainLoop = server.NewMainLoop(self.Update)
 
+	// tcp server
 	self.tcpServer = network.NewTCPServer(&network.TCPServerOptions{
 		Ip:               conf.MSAddr.Ip,
 		Port:             conf.MSAddr.Port,
@@ -46,6 +50,12 @@ func (self *MasterServer) Init() {
 		OnRecvHandler:    self.TcpServer_RecvHandler,
 		OnCloseHandler:   self.TcpServer_CloseHandler,
 	})
+
+	// 服务器连接stub
+	self.serverStubHolder = server.NewServerStubHolser()
+
+	// 消息路由
+	self.msgRouteHolder = server.NewMsgRouteHolder()
 }
 
 func (self *MasterServer) Run() {

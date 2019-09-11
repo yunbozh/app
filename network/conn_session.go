@@ -27,10 +27,10 @@ type ConnSession struct {
 	msgParser *MsgParser
 	processor ProcessorIf
 
-	peer Peer
+	peer PeerIf
 }
 
-func newConnSession(conn net.Conn, peer Peer) *ConnSession {
+func newConnSession(conn net.Conn, peer PeerIf) *ConnSession {
 	session := new(ConnSession)
 	session.conn = conn
 	session.writeChan = make(chan []byte, CHAN_WRITE_NUM)

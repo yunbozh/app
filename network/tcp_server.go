@@ -15,7 +15,7 @@ const (
 )
 
 type TCPServer struct {
-	options        TCPServerOptions
+	options TCPServerOptions
 
 	Addr string
 
@@ -150,4 +150,12 @@ func (self *TCPServer) newConnect(conn net.Conn) {
 
 	logger.Debug("close connection, address: %s, connIdx: %d", conn.RemoteAddr().String(), session.GetID())
 	self.connMgr.Remove(session)
+}
+
+func (self *TCPServer) Send(connIdx uint32, msgId uint32, msg interface{}) {
+	self.connMgr.SendMsg(int32(connIdx), msgId, msg)
+}
+
+func (self *TCPServer) GetPeerType() PeerType {
+	return PEER_TYPE_TCP_SERVER
 }
