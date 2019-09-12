@@ -15,7 +15,7 @@ const (
 	MSG_ROUTE_TYPE_COUNT   MsgRouteType = 8
 )
 
-func ServerTypeToRouteType(serverType ServerType) MsgRouteType {
+func ServerTypeToMsgRouteType(serverType ServerType) MsgRouteType {
 	routeType := MSG_ROUTE_TYPE_INVALID
 
 	switch serverType {
@@ -35,3 +35,16 @@ func ServerTypeToRouteType(serverType ServerType) MsgRouteType {
 
 	return routeType
 }
+
+// 消息区分
+const (
+	MSG_BASE_INTERVAL uint32 = 1000 // 消息间隔
+
+	MSG_BASE_APP_INSIDE uint32 = 1000 // 服务器内部连接用
+
+	MSG_BASE_C2GS uint32 = 11000
+	MSG_BASE_C2LS uint32 = 12000
+
+	MSG_BASE_GS2C  uint32 = 21000
+	MSG_BASE_GS2LS uint32 = 22000
+)

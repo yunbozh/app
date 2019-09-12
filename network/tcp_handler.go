@@ -1,7 +1,7 @@
 package network
 
 type OnConnectHandler func(connIdx uint32, ip string)
-type OnRecvHandler func(connIdx uint32, msgId uint32, msg interface{})
+type OnRecvHandler func(connIdx uint32, msgId uint32, msg []byte)
 type OnCloseHandler func(connIdx uint32)
 
 type TCPServerOptions struct {

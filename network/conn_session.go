@@ -85,12 +85,12 @@ func (self *ConnSession) recvLoop() {
 	for {
 		data, err := self.ReadMsg()
 		if err != nil {
-			logger.Fatal("read msg error: %v \n", err)
+			logger.Error("read msg error: %v \n", err)
 			break
 		}
 
 		if len(data) < protobuf.MSG_ID_LEN {
-			logger.Fatal("read msg error, msg data too short")
+			logger.Error("read msg error, msg data too short")
 			break
 		}
 

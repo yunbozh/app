@@ -1,7 +1,5 @@
 package def
 
-import "app/common/server"
-
 // server type
 type ServerType uint16
 
@@ -39,4 +37,4 @@ type ClientUid struct {
 }
 
 // 消息处理函数
-type MsgHandler func(server.ServerStubIf, interface{})
+type MsgHandler func(ServerStubIf, interface{})

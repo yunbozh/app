@@ -5,7 +5,6 @@ import (
 	"app/common/server"
 	"app/def"
 	"app/network"
-	"runtime/debug"
 )
 
 var (
@@ -71,12 +70,7 @@ func (self *MasterServer) Close() {
 }
 
 func (self *MasterServer) Update() {
-	defer func() {
-		if err := recover(); err != nil {
-			logger.Error("%v", err)
-			logger.Error("%s", debug.Stack())
-		}
-	}()
+	defer Recover()
 
 	//now := time.Now().UnixNano() / 1e6
 

@@ -39,8 +39,8 @@ func (self *MsgRouteHolder) RegisterMsg(routeType def.MsgRouteType, msgId uint32
 	return true
 }
 
-func (self *MsgRouteHolder) RouteMsg(stub ServerStubIf, connIdx uint32, msgId uint32, msg interface{}) {
-	routeType := def.ServerTypeToRouteType(stub.GetServerType())
+func (self *MsgRouteHolder) RouteMsg(stub def.ServerStubIf, connIdx uint32, msgId uint32, msg interface{}) {
+	routeType := def.ServerTypeToMsgRouteType(stub.GetServerType())
 
 	if route, ok := self.msgRouteMap[routeType]; ok {
 

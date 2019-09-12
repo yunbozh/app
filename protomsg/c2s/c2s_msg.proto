@@ -1,9 +1,9 @@
-syntax = "proto2";
+syntax = "proto3";
 
 package c2s;
 
 import "c2s/c2s_msg_id.proto";
 
 message ReqLogin {
-    required MsgID msg_id = 1[default = MSGID_C2S_REQ_LOGIN];
+    MSGID msg_id = 1;
 }

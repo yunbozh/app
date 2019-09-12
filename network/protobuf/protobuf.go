@@ -44,7 +44,7 @@ func (self *Processor) Route(msg interface{}) error {
 		return errors.New("msg type error")
 	}
 
-	logger.Debug("recv msg: %v \n", msgInfo)
+	logger.Debug("recv msg: %v", msgInfo)
 
 	return nil
 }

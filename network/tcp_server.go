@@ -45,8 +45,8 @@ func (self *TCPServer) OnConnectHandler(connIdx uint32, ip string) {
 	self.options.OnConnectHandler(connIdx, ip)
 }
 
-func (self *TCPServer) OnRecvHandler(connIdx uint32, msgId uint32, msg interface{}) {
-	self.options.OnRecvHandler(connIdx, msgId, msgId)
+func (self *TCPServer) OnRecvHandler(connIdx uint32, msgId uint32, msg []byte) {
+	self.options.OnRecvHandler(connIdx, msgId, msg)
 }
 
 func (self *TCPServer) OnCloseHandler(connIdx uint32) {

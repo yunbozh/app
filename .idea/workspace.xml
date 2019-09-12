@@ -3,19 +3,30 @@
   <component name="ChangeListManager">
     <list default="true" id="e97a189b-bc4e-4810-8714-ed59852ec7f8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/msg_route/msg_meta.go" beforeDir="false" afterPath="$PROJECT_DIR$/common/server/msg_meta.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/msg_route/msg_route.go" beforeDir="false" afterPath="$PROJECT_DIR$/common/server/msg_route.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/msg_route/msg_route_holder.go" beforeDir="false" afterPath="$PROJECT_DIR$/common/server/msg_route_holder.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/def/msg_route_def.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/server/msg_route_holder.go" beforeDir="false" afterPath="$PROJECT_DIR$/common/server/msg_route_holder.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/server/server_stub_holder.go" beforeDir="false" afterPath="$PROJECT_DIR$/common/server/server_stub_holder.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/server/server_stub_if.go" beforeDir="false" afterPath="$PROJECT_DIR$/def/server_stub_if.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/def/msg_route_def.go" beforeDir="false" afterPath="$PROJECT_DIR$/def/msg_route_def.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/def/server_def.go" beforeDir="false" afterPath="$PROJECT_DIR$/def/server_def.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gate/gate_server.go" beforeDir="false" afterPath="$PROJECT_DIR$/gate/gate_server.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gate/gate_server_handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/gate/tcp_handler.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/master/master_server.go" beforeDir="false" afterPath="$PROJECT_DIR$/master/master_server.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/master/master_server_handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/master/master_server_handler.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/master/master_server_handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/master/tcp_handler.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/master/register_msg.go" beforeDir="false" afterPath="$PROJECT_DIR$/master/register_msg.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/network/conn_session.go" beforeDir="false" afterPath="$PROJECT_DIR$/network/conn_session.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/network/peer_if.go" beforeDir="false" afterPath="$PROJECT_DIR$/network/peer_if.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/network/protobuf/protobuf.go" beforeDir="false" afterPath="$PROJECT_DIR$/network/protobuf/protobuf.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/network/tcp_client.go" beforeDir="false" afterPath="$PROJECT_DIR$/network/tcp_client.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/network/tcp_handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/network/tcp_handler.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/network/tcp_server.go" beforeDir="false" afterPath="$PROJECT_DIR$/network/tcp_server.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pb/c2s/c2s_msg.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/pb/c2s/c2s_msg.pb.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pb/c2s/c2s_msg_id.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/pb/c2s/c2s_msg_id.pb.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pb/s2s/s2s_msg.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/pb/s2s/s2s_msg.pb.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pb/s2s/s2s_msg_id.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/pb/s2s/s2s_msg_id.pb.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protomsg/c2s/c2s_msg.proto" beforeDir="false" afterPath="$PROJECT_DIR$/protomsg/c2s/c2s_msg.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protomsg/c2s/c2s_msg_id.proto" beforeDir="false" afterPath="$PROJECT_DIR$/protomsg/c2s/c2s_msg_id.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protomsg/s2s/s2s_msg.proto" beforeDir="false" afterPath="$PROJECT_DIR$/protomsg/s2s/s2s_msg.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protomsg/s2s/s2s_msg_id.proto" beforeDir="false" afterPath="$PROJECT_DIR$/protomsg/s2s/s2s_msg_id.proto" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -45,22 +56,23 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.import.settings.migrated" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/gate" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/gate" />
+      <recent name="$PROJECT_DIR$/log" />
+      <recent name="$PROJECT_DIR$/network" />
+      <recent name="$PROJECT_DIR$/mynet/peer" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/def" />
       <recent name="$PROJECT_DIR$/network" />
       <recent name="$PROJECT_DIR$/common/server" />
       <recent name="$PROJECT_DIR$/common/msg_route" />
       <recent name="$PROJECT_DIR$/common/logger" />
-      <recent name="$PROJECT_DIR$/common" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/log" />
-      <recent name="$PROJECT_DIR$/gate" />
-      <recent name="$PROJECT_DIR$/network" />
-      <recent name="$PROJECT_DIR$/mynet/peer" />
     </key>
   </component>
   <component name="RunDashboard">

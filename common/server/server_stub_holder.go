@@ -26,6 +26,9 @@ func NewServerStubHolser() *ServerStubHolder {
 	holder.stubList[def.SERVER_TYPE_SS] = make([]*ServerStub, conf.SSCount+1)
 	holder.stubList[def.SERVER_TYPE_RS] = make([]*ServerStub, conf.RSCount+1)
 
+	holder.stubMapForTcpServer = make(map[uint32]*ServerStub)
+	holder.stubMapForTcpClient = make(map[uint32]*ServerStub)
+
 	return holder
 }
 
@@ -59,19 +62,19 @@ func (self *ServerStubHolder) AddStub(peer network.PeerIf, connIdx uint32, serve
 	}
 
 	if self.stubList[serverUid.ServerType][serverUid.ServerId] != nil {
-		logger.Fatal("server exist, serverUid: %v", serverUid)
+		logger.Error("server exist, serverUid: %v", serverUid)
 		return false
 	}
 
 	if peer.GetPeerType() == network.PEER_TYPE_TCP_SERVER {
 		if _, ok := self.stubMapForTcpServer[connIdx]; ok {
-			logger.Fatal("tcp server connIdx exist, conndIdx: %d", connIdx)
+			logger.Error("tcp server connIdx exist, conndIdx: %d", connIdx)
 			return false
 		}
 
 	} else if peer.GetPeerType() == network.PEER_TYPE_TCP_CLIENT {
 		if _, ok := self.stubMapForTcpClient[connIdx]; ok {
-			logger.Fatal("tcp client connIdx exist, conndIdx: %d", connIdx)
+			logger.Error("tcp client connIdx exist, conndIdx: %d", connIdx)
 			return false
 		}
 	}
@@ -96,12 +99,12 @@ func (self *ServerStubHolder) AddStub(peer network.PeerIf, connIdx uint32, serve
 
 func (self *ServerStubHolder) checkServerUid(serverUid def.ServerUid) bool {
 	if serverUid.ServerType == def.SERVER_TYPE_INVALID || serverUid.ServerType >= def.SERVER_TYPE_COUNT {
-		logger.Fatal("server uid.ServeType error, uid: %v", serverUid)
+		logger.Error("server uid.ServeType error, uid: %v", serverUid)
 		return false
 	}
 
 	if serverUid.ServerId == def.INVALID_ID || int(serverUid.ServerId) >= len(self.stubList[serverUid.ServerType]) {
-		logger.Fatal("server uid.ServerId error, uid: %v", serverUid)
+		logger.Error("server uid.ServerId error, uid: %v", serverUid)
 		return false
 	}
 

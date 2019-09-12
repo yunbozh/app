@@ -5,7 +5,6 @@ import (
 	"app/common/server"
 	"app/def"
 	"app/network"
-	"runtime/debug"
 )
 
 var (
@@ -24,6 +23,9 @@ type GateServer struct {
 	tcpServerForClient *network.TCPServer
 	tcpServerForServer *network.TCPServer
 	tcpClient          *network.TCPClient
+
+	serverStubHolder *server.ServerStubHolder
+	msgRouteHolder *server.MsgRouteHolder
 }
 
 func (self *GateServer) Init() {
@@ -65,6 +67,12 @@ func (self *GateServer) Init() {
 		OnRecvHandler:    self.TcpClient_RecvHandler,
 		OnCloseHandler:   self.TcpClient_CloseHandler,
 	})
+
+	// 服务器连接stub
+	self.serverStubHolder = server.NewServerStubHolser()
+
+	// 消息路由
+	self.msgRouteHolder = server.NewMsgRouteHolder()
 }
 
 func (self *GateServer) Run() {
@@ -84,12 +92,7 @@ func (self *GateServer) Close() {
 }
 
 func (self *GateServer) Update() {
-	defer func() {
-		if err := recover(); err != nil {
-			logger.Error("%v", err)
-			logger.Error("%s", debug.Stack())
-		}
-	}()
+	defer Recover()
 
 	//now := time.Now().UnixNano() / 1e6
 }

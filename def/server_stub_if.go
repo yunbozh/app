@@ -1,8 +1,6 @@
-package server
-
-import "app/def"
+package def
 
 type ServerStubIf interface {
 	Send(msgId uint32, msg interface{})
-	GetServerType() def.ServerType
+	GetServerType() ServerType
 }

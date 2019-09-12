@@ -45,7 +45,7 @@ func (self *TCPClient) OnConnectHandler(connIdx uint32, ip string) {
 	self.options.OnConnectHandler(connIdx, ip)
 }
 
-func (self *TCPClient) OnRecvHandler(connIdx uint32, msgId uint32, msg interface{}) {
+func (self *TCPClient) OnRecvHandler(connIdx uint32, msgId uint32, msg []byte) {
 	self.options.OnRecvHandler(connIdx, msgId, msg)
 }
 
